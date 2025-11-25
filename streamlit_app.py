@@ -12,7 +12,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 st.title('🎈 App Name')
 
 
-with st.explander('Data'):
+with st.expander('Data'):
   st.write('Raw Dataset')
   df = pd.read_csv('Clean_Dataset.csv')
   df
