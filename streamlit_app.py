@@ -12,7 +12,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 st.title('🎈 App Name')
 
 
-df_nf = pd.read_csv("E:\Data Science and Analytics\PET PROJECT 1 - Streamlit\Clean_Dataset.csv")
+df_nf = pd.read_csv("https://raw.githubusercontent.com/arnanbonny/Petproject/master/Clean_Dataset.csv")
 df = df_nf.drop(['flight', 'Unnamed: 0'], axis=1)
 cat_cols = ['airline','source_city', 'departure_time', 'stops', 'arrival_time', 'destination_city','class']
 num_cols = ['duration', 'days_left']
