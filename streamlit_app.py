@@ -48,7 +48,7 @@ def train_model(X_train, y_train):
     X_train_scaled[num_cols] = scaler.fit_transform(X_train[num_cols])
     
     # Train model with fewer trees for faster loading
-    rf_model = RandomForestRegressor(n_estimators=50, random_state=42, n_jobs=-1)
+    rf_model = RandomForestRegressor(n_estimators=500, random_state=42, n_jobs=-1)
     rf_model.fit(X_train_scaled, y_train)
     
     return rf_model, scaler
