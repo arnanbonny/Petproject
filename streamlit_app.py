@@ -14,5 +14,5 @@ st.title('🎈 App Name')
 
 with st.expander('Data'):
   st.write('Raw Dataset')
-  df = pd.read_csv('https://github.com/arnanbonny/Petproject/blob/master/Clean_Dataset.csv')
+  df = pd.read_csv('https://raw.githubusercontent.com/arnanbonny/Petproject/master/Clean_Dataset.csv')
   df
