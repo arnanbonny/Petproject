@@ -48,7 +48,7 @@ def train_model(X_train, y_train):
     X_train_scaled[num_cols] = scaler.fit_transform(X_train[num_cols])
     
     # Train model with fewer trees for faster loading
-    rf_model = RandomForestRegressor(n_estimators=150, random_state=42, n_jobs=-1)
+    rf_model = RandomForestRegressor(n_estimators=50, random_state=42, n_jobs=-1)
     rf_model.fit(X_train_scaled, y_train)
     
     return rf_model, scaler
@@ -177,21 +177,26 @@ try:
             'days_left': [days_left]
         })
         
+        # Create a dummy dataframe with all possible categories from training data
+        # This ensures consistent encoding
+        temp_df = pd.concat([df[['airline','source_city', 'departure_time', 'stops', 
+                                  'arrival_time', 'destination_city','class', 'duration', 'days_left']], 
+                            input_data], ignore_index=True)
+        
         # Encode categorical variables (same as training)
         cat_cols = ['airline','source_city', 'departure_time', 'stops', 'arrival_time', 'destination_city','class']
-        input_encoded = pd.get_dummies(input_data, columns=cat_cols, drop_first=True)
+        temp_encoded = pd.get_dummies(temp_df, columns=cat_cols, drop_first=True)
         
-        # Align columns with training data
-        # Get all columns from training data
-        training_cols = feature_columns
+        # Extract only the last row (our input)
+        input_encoded = temp_encoded.iloc[[-1]].reset_index(drop=True)
         
-        # Add missing columns with 0
-        for col in training_cols:
+        # Ensure all training columns are present
+        for col in feature_columns:
             if col not in input_encoded.columns:
                 input_encoded[col] = 0
         
         # Reorder columns to match training data
-        input_encoded = input_encoded[training_cols]
+        input_encoded = input_encoded[feature_columns]
         
         # Scale numerical features
         num_cols = ['duration', 'days_left']
