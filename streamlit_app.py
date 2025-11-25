@@ -76,10 +76,6 @@ st.header('✈️ Predict Flight Price')
 st.write('Enter flight details below to get a price prediction:')
 
 
-# Interactive Prediction Section
-st.divider()
-st.header('✈️ Predict Flight Price')
-st.write('Enter flight details below to get a price prediction:')
 
 # Create input form
 with st.form('prediction_form'):
