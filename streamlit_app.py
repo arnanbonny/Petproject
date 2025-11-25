@@ -47,7 +47,7 @@ def train_model(df):
     
     # Calculate metrics
     mae = mean_absolute_error(y_test, y_pred)
-    rmse = mean_squared_error(y_test, y_pred, squared=False)
+    rmse = np.sqrt(mean_squared_error(y_test, y_pred)) 
     r2 = r2_score(y_test, y_pred)
     
     return rf_model, scaler, r2, mae, rmse, X_test_scaled, y_test, y_pred
