@@ -160,7 +160,4 @@ if submit_button:
             st.write(f"**Duration:** {duration} hours")
             st.write(f"**Days Left:** {days_left} days")
 
-except Exception as e:
-    st.error(f'❌ An error occurred: {str(e)}')
-    st.info('Please check the data source and try again.')
-    st.exception(e)
+
