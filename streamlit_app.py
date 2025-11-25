@@ -75,6 +75,12 @@ st.divider()
 st.header('✈️ Predict Flight Price')
 st.write('Enter flight details below to get a price prediction:')
 
+
+# Interactive Prediction Section
+st.divider()
+st.header('✈️ Predict Flight Price')
+st.write('Enter flight details below to get a price prediction:')
+
 # Create input form
 with st.form('prediction_form'):
     col1, col2, col3 = st.columns(3)
@@ -123,7 +129,7 @@ if submit_button:
     
     # Align columns with training data
     # Get all columns from training data
-    training_cols = X_train.columns
+    training_cols = feature_columns
     
     # Add missing columns with 0
     for col in training_cols:
@@ -159,5 +165,3 @@ if submit_button:
             st.write(f"**Arrival:** {arrival_time}")
             st.write(f"**Duration:** {duration} hours")
             st.write(f"**Days Left:** {days_left} days")
-
-
